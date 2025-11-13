@@ -57,8 +57,8 @@ COPY --chown=1001:1001 requirements.txt .
 RUN pip install --no-cache-dir --prefer-binary -r requirements.txt \
     || (echo "pip install -r requirements.txt FAILED." && exit 1)
 
-# Pin ctranslate2 to a compatible version
-RUN pip install --no-cache-dir "ctranslate2<4.5.0"
+# Pin ctranslate2 and transformers to compatible versions
+RUN pip install --no-cache-dir "ctranslate2<4.5.0" "transformers==4.47.0"
 
 # Copy the application code
 COPY --chown=1001:1001 code/ ./code/
